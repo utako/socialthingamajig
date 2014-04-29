@@ -1,0 +1,29 @@
+<h1>Create a New Post</h1>
+<form action='<%= user_posts_url %>' method='post'>
+  <%= auth_token_input %>
+  <label>Body<br>
+    <textarea name='post[body]'><%= @post.body %></textarea>
+  </label><br>
+  <label>Links<br>
+    <% @post.links.each_with_index do |link, i| %>
+      <label>Title
+        <input type='text' name='links[<%= i %>][title]'
+          value='<%= link.title %>'>
+      </label>
+      <label>URL
+        <input type='text' name='links[<%= i %>][url]' value='<%= link.url %>'>
+      </label><br>
+    <% end %>
+  </label>
+  <label>Friend Circles<br>
+    <br>
+    <% @circles.each do |circle| %>
+      <label>
+        <input type='checkbox' value='<%= circle.id %>'
+          name='post_share[friend_circle_ids][]'>
+        <%= circle.name %>
+      </label><br>
+    <% end %>
+  </label><br>
+  <input type='submit' value='Create Post'>
+</form>

@@ -1,0 +1,5 @@
+<h1><%= @post.body %></h1>
+<% @post.links.each do |link| %>
+  <%= link.title %>
+  <%= link.url %><br>
+<% end %>

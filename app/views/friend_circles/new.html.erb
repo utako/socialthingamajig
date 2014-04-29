@@ -1,0 +1,13 @@
+<h1>Create Friend Circle!</h1>
+
+<%= render partial: 'form', locals: {
+      action: user_friend_circles_url,
+      method: 'POST',
+      users: @users,
+      circle: @circle,
+      value: 'Create Friend Circle',
+      member_ids: []
+    }
+%>
+
+

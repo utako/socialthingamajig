@@ -1,0 +1,11 @@
+<h1>Edit Friend Circle</h1>
+<%= render partial: 'form', locals: {
+  action: user_friend_circle_url(current_user, @circle),
+  method: 'PATCH',
+  users: @users,
+  circle: @circle,
+  value: 'Edit Friend Circle',
+  member_ids: @circle.members.map(&:id)
+  }
+%>
+

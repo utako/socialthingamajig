@@ -1,0 +1,29 @@
+<form action='<%= action %>' method='POST'>
+  <%= auth_token_input %>
+
+  <% if method == 'PATCH' %>
+    <input type='hidden' name='_method' value='PATCH'>
+  <% end %>
+  <label>Friend Circle Name:
+    <input name="circle[name]" type='text' value='<%= circle.name %>'>
+  </label><br>
+  <br>
+  <label>Friends<br>
+    <input type='hidden' name='membership[user_ids][]' value=''>
+    <br>
+
+
+    <% users.each do |user| %>
+      <% next if user.id == current_user.id %>
+      <label>
+        <input type='checkbox'
+              value='<%= user.id %>'
+              name='membership[user_ids][]'
+              <%= 'checked' if member_ids.include?(user.id) %> >
+        <%= user.email %>
+      </label><br>
+    <% end %>
+  </label><br>
+  <br>
+  <input type="submit" value="<%= value %>">
+</form>

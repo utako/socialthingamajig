@@ -1,0 +1,9 @@
+<h1>:-) YOUR FRIEND CIRCLES :-)</h1>
+
+<% @circles.each do |circle| %>
+  <h2><%= circle.name %></h2>
+  <%= link_to 'Edit Circle', edit_user_friend_circle_url(current_user, circle) %><br>
+  <% circle.members.each do |friend| %>
+    <%= friend.email %><br>
+  <% end %>
+<% end %>
